@@ -1,0 +1,55 @@
+{% extends '_blue.html' %}
+{% block content %}
+        <table class="table table-border table-bordered table-bg">
+				<thead>
+					<tr>
+						<th colspan="18" scope="col">信息统计</th>
+			</tr>
+					<tr class="text-c">
+                        <th>id</th>
+						<th>网关SN</th>
+						<th>物联卡类型</th>
+						<th>物联卡号</th>
+						<th>物联卡套餐</th>
+{#						<th>collection_thread_id</th>#}
+{#                        <th>server_thread_id</th>#}
+                        <th>启用日期</th>
+                        <th>网关类型</th>
+                        <th>云端SN</th>
+                        <th>项目</th>
+                        <th>设备</th>
+                        <th>设备类型</th>
+                        <th>网关信息</th>
+                        <th>端口</th>
+                        <th>地点</th>
+                        <th><a href="{{ url_for('add_box_base') }}">添加</a></th>
+                        <th><a href="{{ url_for('select') }}">查询</a></th>
+			</tr>
+		</thead>
+				<tbody>
+                <meta charset="UTF-8">
+                {% for data in result_list %}
+					<tr class="text-c">
+                        <td>{{ data.id }}</td>
+						<td>{{ data.box_id }}</td>
+						<td>{{ data.card_type }}</td>
+						<td>{{ data.card_number }}</td>
+						<td>{{ data.card_cost }}</td>
+{#						<td>{{ data.collection_thread_id }}</td>#}
+{#                        <td>{{ data.server_thread_id }}</td>#}
+                        <td>{{ data.start_date }}</td>
+                        <td>{{ data.box_type }}</td>
+                        <td>{{ data.cloud_id}}</td>
+                        <td>{{ data.project}}</td>
+                        <td>{{ data.machine}}</td>
+                        <td>{{ data.machine_type}}</td>
+                        <td>{{ data.box_msg}}</td>
+                        <td>{{ data.port}}</td>
+                        <td>{{ data.position}}</td>
+                    <td><a href="{{ url_for("delete_box_base",Box_id = data.id) }}">删除</a></td>
+                     <td>/</td>
+			</tr>
+                    {% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
